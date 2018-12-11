@@ -28,9 +28,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" href="#">Telegram</a>
+            <a class="nav-item nav-link" href="https://t.me/meysamazad81">Telegram</a>
             <a class="nav-item nav-link" href="#">Resume</a>
-            <a class="nav-item nav-link" href="#">Blog</a>
+            <a class="nav-item nav-link {% block active_blog %}{% endblock %}" href="{% url 'all_blogs' %}">Blog</a>
             <!-- <a class="nav-item nav-link disabled" href="#">Disabled</a> -->
           </div>
         </div>
@@ -52,6 +52,7 @@
       <div class="album py-5 bg-light">
         <div class="container">
 
+          {% block content %}
           <div class="row">
             {% for job in jobs.all %}
             <div class="col-md-4">
@@ -63,8 +64,9 @@
               </div>
             </div>
             {% endfor %}
-
           </div>
+          {% endblock %}
+
         </div>
       </div>
 

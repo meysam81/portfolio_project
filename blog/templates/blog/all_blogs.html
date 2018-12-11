@@ -1,0 +1,14 @@
+{% extends "jobs/home_page.html" %}
+{% block active_blog %}active{% endblock %}
+{% block content %}
+<h1>Latest Posts</h1>
+<hr/>
+<div>
+  {% for blog in blogs.all %}
+  <img src = "{{ blog.image.url }}" class = "img-fluid" height = 50 width = 50/>
+  <h2><a href="#">{{ blog.title }}</a></h2>
+  <small>{{ blog.pub_date }}</small>
+  <br/>
+  {% endfor %}
+</div>
+{% endblock %}

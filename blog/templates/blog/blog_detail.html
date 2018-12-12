@@ -1,0 +1,9 @@
+{% extends "blog/all_blogs.html" %}
+{% block content %}
+<h1>{{ blog.title }}</h1>
+<img src = "{{ blog.image.url }}" class = "img-fluid"/>
+<br/>
+{{ blog.body }}
+<br/>
+<small>{{ blog.pub_date_pretty }}</small>
+{% endblock %}

@@ -4,3 +4,6 @@ from django.db import models as db
 class Job(db.Model):
     image = db.ImageField(upload_to = 'images/')
     summary = db.CharField(max_length = 200)
+
+    def __str__(self):
+        return self.summary

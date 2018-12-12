@@ -1,16 +1,15 @@
 <!doctype html>
+{% load staticfiles %}
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Album example for Bootstrap</title>
+    <title>Meysam Azad</title>
 
     <!-- Bootstrap core CSS -->
-    <!-- <link href="../../dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 
@@ -22,16 +21,15 @@
 
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Meysam Azad</a>
+        <a class="navbar-brand" href="{% url 'home_page' %}">Meysam Azad</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="https://t.me/meysamazad81">Telegram</a>
-            <a class="nav-item nav-link" href="#">Resume</a>
+            <a class="nav-item nav-link" href="{% static 'CV.png' %}">Resume</a>
             <a class="nav-item nav-link {% block active_blog %}{% endblock %}" href="{% url 'all_blogs' %}">Blog</a>
-            <!-- <a class="nav-item nav-link disabled" href="#">Disabled</a> -->
           </div>
         </div>
       </nav>
@@ -42,7 +40,8 @@
       <section class="jumbotron text-center">
         <div class="container">
           <h1 class="jumbotron-heading">Hi! I'm Meysam.</h1>
-          <p class="lead text-muted">Hey, my name is meysam azad and I love to make django websites. It's the thrill of handling the request that the people wants.</p>
+          <img src = "{% static 'Self2.jpg' %}" height = 200/>
+          <p class="lead text-muted">Hey, my name is meysam azad and I love to code because it makes me so alive and happy</p>
           <p>
             <a href="mailto:MeysamAzad81@yahoo.com" class="btn btn-primary my-2">Contact me</a>
           </p>

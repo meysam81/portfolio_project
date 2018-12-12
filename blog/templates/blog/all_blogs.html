@@ -5,9 +5,12 @@
 <hr/>
 <div>
   {% for blog in blogs.all %}
+  <h2><a href="{{ blog.id }}">{{ blog.title }}</a></h2>
   <img src = "{{ blog.image.url }}" class = "img-fluid" height = 50 width = 50/>
-  <h2><a href="#">{{ blog.title }}</a></h2>
-  <small>{{ blog.pub_date }}</small>
+  <br/>
+  <strong>{{ blog.summary }}</strong>
+  <br/>
+  <small>{{ blog.pub_date_pretty }}</small>
   <br/>
   {% endfor %}
 </div>

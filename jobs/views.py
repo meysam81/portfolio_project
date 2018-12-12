@@ -4,4 +4,4 @@ from .models import Job
 # Create your views here.
 def index(request):
     jobs = Job.objects
-    return TemplateResponse(request, 'jobs/home_page.html', {'jobs': jobs})
+    return TemplateResponse(request, 'jobs/index.html', {'jobs': jobs})

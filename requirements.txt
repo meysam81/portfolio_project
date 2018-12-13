@@ -30,7 +30,6 @@ prompt-toolkit==1.0.15
 pycairo==1.16.2
 pycrypto==2.6.1
 Pygments==2.2.0
-pygobject==3.26.1
 pyparted==3.11.1
 python-apt==1.6.0
 python-dateutil==2.7.4

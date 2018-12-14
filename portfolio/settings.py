@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import django_heroku
+from decouple import config
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '!gy#jb5%kb-$5qozsekfe-8xr5969ra=(cn-lqcp(n=$q5m6$v'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -75,21 +78,24 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-import os
 
 DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'portfoliodb',
-        'USER': 'postgres',
-        'PASSWORD': os.environ['DBPASS'],
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'portfoliodb',
+        # 'USER': 'postgres',
+        # 'PASSWORD': os.environ['DBPASS'],
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',
     }
 }
 
+DATABASES['default'] = dj_database_url.config(
+    default = 'postgres://bnpkvtsygxeorm:eef69523a697551979a88708817a5add06253986662259ed473ccdc5aaecf9d3@ec2-54-83-197-230.compute-1.amazonaws.com:5432/de7i5o3cjhgn49')
+db_from_env = dj_database_url.config(conn_max_age = 600)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -137,5 +143,4 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-import django_heroku
 django_heroku.settings(locals())

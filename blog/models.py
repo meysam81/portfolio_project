@@ -18,3 +18,7 @@ class Blog(db.Model):
 
     def __str__(self):
         return self.title
+
+    @staticmethod
+    def latest_blogs():
+        return Blog.objects.order_by('-pub_date')

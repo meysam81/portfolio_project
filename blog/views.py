@@ -4,7 +4,7 @@ from .models import Blog
 
 # Create your views here.
 def index(request):
-    blogs = Blog.objects
+    blogs = Blog.latest_blogs()
     return render(request, 'blog/all_blogs.html', {'blogs': blogs})
 
 def detail(request, blog_id):

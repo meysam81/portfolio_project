@@ -144,3 +144,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 django_heroku.settings(locals())
+
+# to overwrite settings that must be available on heroku
+try:
+    from .local_settings import *
+except:
+    pass

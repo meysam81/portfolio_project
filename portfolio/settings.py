@@ -141,7 +141,7 @@ MEDIA_URL = '/media/'
 
 django_heroku.settings(locals())
 
-# to overwrite settings that must be available on heroku
+# to overwrite settings that must be available on heroku (PaaS)
 try:
     from .local_settings import *
 except:

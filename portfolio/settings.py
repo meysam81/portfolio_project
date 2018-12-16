@@ -11,8 +11,12 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-import django_heroku
+
+# needed for configs in .env file
 from decouple import config
+
+# needed for deployment on heroku
+import django_heroku
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -81,19 +85,11 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'portfoliodb',
-        # 'USER': 'postgres',
-        # 'PASSWORD': os.environ['DBPASS'],
-        # 'HOST': 'localhost',
-        # 'PORT': '5432',
     }
 }
 
-DATABASES['default'] = dj_database_url.config(
-    default = 'postgres://bnpkvtsygxeorm:eef69523a697551979a88708817a5add06253986662259ed473ccdc5aaecf9d3@ec2-54-83-197-230.compute-1.amazonaws.com:5432/de7i5o3cjhgn49')
+DATABASES['default'] = dj_database_url.config(default = config('DATABASE_URL'))
 db_from_env = dj_database_url.config(conn_max_age = 600)
 DATABASES['default'].update(db_from_env)
 
